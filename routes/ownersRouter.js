@@ -5,7 +5,7 @@
 if(process.env.NODE_ENV === "development"){
 router.post('/create',async (req,res) => {
     let owners = ownerModel.find();
-    if(owners.length > 0) return res.send(503).send('You dont have permission to create a new owner')
+    if(owners.length > 0) return res.send(503).send('You dont have permission to create a new owner');
 });
 }
 
