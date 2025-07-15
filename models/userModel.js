@@ -1,9 +1,10 @@
 const mongoose = require('mongoose');
 
 const userSchema = mongoose.Schema({
-    fullName : {
+    fullname : {
         type : String,
-        minLength : 4
+        minLength : 3,
+        trim: true,
     },
     email : String,
     password : String,
@@ -11,7 +12,6 @@ const userSchema = mongoose.Schema({
         type : Array,
         default : []
     },
-    isAdmin : Boolean,
     orders :  {
         type : Array,
         default : []
