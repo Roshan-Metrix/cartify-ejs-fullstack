@@ -1,24 +1,13 @@
- const express = require('express');
- const router = express.Router();
- const userModel = require('../models/userModel')
+const express = require('express');
+const router = express.Router();
+const { createdUser,loginUser } = require('../controllers/authController')
 
-router.get('/', (req,res) => {
-    res.send('hello man');
+router.get('/', (req, res) => {
+    res.send('User home');
 });
 
-router.post('/register',async (req,res) => {
-   try{
-     let { email , fullname, password } = req.body;
-    let registeredUser =await userModel.create({
-        email,
-        fullname,
-        password,
-    })
-    console.log(registeredUser);
-    res.status(202).send("Created users");
-   } catch(err){
-    res.send(err.message);
-   }
-});
+router.post('/register',createdUser);
 
- module.exports = router;
+router.post('/login', loginUser);
+
+module.exports = router;
